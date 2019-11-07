@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { EventsAppComponent } from './events-app.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { appRoutes } from './routes';
 import { Error404Component } from './errors/404.component';
 
@@ -19,7 +20,7 @@ import {
 import { AuthService } from './user/auth.service';
 
 @NgModule({
-  imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes)],
 
   declarations: [
     EventsAppComponent,
@@ -47,9 +48,7 @@ export class AppModule {}
 
 export function checkDirtyState(component: CreateEventComponent) {
   if (component.isDirty) {
-    return window.confirm(
-      'You have not saved this event, do you really want to cancel?'
-    );
+    return window.confirm('You have not saved this event, do you really want to cancel?');
   }
   return true;
 }
